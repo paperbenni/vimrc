@@ -1,4 +1,63 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'valloric/youcompleteme'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-surround'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kien/ctrlp.vim'
+Plugin 'raimondi/delimitmate'
+Plugin 'tpope/vim-repeat'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'jdonaldson/vaxe'
+Plugin 'shougo/vimshell.vim'
+Plugin 'shougo/vimproc.vim'
+
+
+
+" Plugin 'floobits/floobits-vim'
+
+
+
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+" git repos on your local machine (i.e. when working on your own plugin)
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -16,8 +75,7 @@ if v:progname =~? "evim"
 endif
 
 " Get the defaults that most users want.
-source $VIMRUNTIME/dePlugin 'tpope/vim-fugitive'
-faults.vim
+source $VIMRUNTIME/defaults.vim
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -58,31 +116,16 @@ endif " has("autocmd")
 if has('syntax') && has('eval')
   packadd matchit
 endif
-
-set nocompatible      
-
-
-
-
-
-filetype off 
-
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
-
- Plugin 'VundleVim/Vundle.vim'
- Plugin 'tpope/vim-fugitive'
- Plugin 'bling/vim-airline'
- Plugin 'tpope/vim-surround'
- Plugin 'kien/ctrlp.vim'
- Plugin 'valloric/youcompleteme'
- Plugin 'honza/vim-snippets'
- 
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+colorscheme default
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='onedark'
 
 
-
- 
- call vundle#end()            " required
- filetype plugin indent on    " required
-
-
+set fillchars+=vert:\ 
+set pastetoggle=<F2>
+set number
+set numberwidth=7
+set background=dark
+set mouse=a
