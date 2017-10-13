@@ -16,7 +16,8 @@ if v:progname =~? "evim"
 endif
 
 " Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
+source $VIMRUNTIME/dePlugin 'tpope/vim-fugitive'
+faults.vim
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -70,6 +71,15 @@ filetype off
  call vundle#begin()
 
  Plugin 'VundleVim/Vundle.vim'
+ Plugin 'tpope/vim-fugitive'
+ Plugin 'bling/vim-airline'
+ Plugin 'tpope/vim-surround'
+ Plugin 'kien/ctrlp.vim'
+ Plugin 'valloric/youcompleteme'
+ Plugin 'honza/vim-snippets'
+ 
+
+
 
  
  call vundle#end()            " required
